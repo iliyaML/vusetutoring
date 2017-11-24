@@ -37,6 +37,10 @@ app.use(bodyParser.json());
 // Method Override Middleware
 app.use(methodOverride('_method'));
 
+app.get('/', (req, res) => {
+    res.redirect('/subjects');
+});
+
 // Add Subject Form (GET)
 app.get('/subjects/add', (req, res) => {
     res.render('subjects/add');
