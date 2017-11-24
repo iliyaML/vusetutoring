@@ -1,0 +1,15 @@
+{{#if tutor}}
+<div class="alert alert-success" role="alert">
+  {{ tutor.firstName }} has successfully clocked in.
+</div>
+{{/if}}
+<div class="card card-body">
+    <h3>Tutor TimeClock</h3>
+    <form action="/tutors/timeclock?_method=PUT" method="post">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="form-group">
+            <label for="uniqueCode">Unique Code</label>
+            <input type="password" class="form-control" name="uniqueCode" required>
+        </div>
+    </form>
+</div>

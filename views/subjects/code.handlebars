@@ -1,0 +1,8 @@
+<h1>Tutors ({{ totalTutors }}): {{ subject.courseCode }} - {{ subject.courseName }}</h1>
+<ul class="list-group" id="subjects">
+{{#each tutors}}
+    <li class="list-group-item">{{ tutorId.firstName }}</li>
+{{else}}
+    <li class="list-group-item">There are no tutors online for this subject.</li>
+{{/each}}
+</ul>

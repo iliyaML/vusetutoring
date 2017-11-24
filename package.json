@@ -1,0 +1,18 @@
+{
+  "name": "vandystemtutoring",
+  "version": "1.0.0",
+  "description": "App for Vandy STEM Tutoring",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Iliya Mohamad Lokman",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.10",
+    "mongoose": "^4.13.4"
+  }
+}

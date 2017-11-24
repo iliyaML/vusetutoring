@@ -1,0 +1,15 @@
+<div class="card card-body">
+    <h3>{{ subject.courseCode }} - {{ subject.courseName }}</h3>
+    <form action="/subjects/tutors" method="post">
+        <input type="hidden" name="courseCode" value="{{ subject.courseCode }}">
+        <div class="form-group">
+            <label for="uniqueCode">Tutor</label>
+            <select class="form-control" name="tutorId">
+                {{#each tutors}}
+                    <option value="{{ _id }}">{{ vunetId }}</option>
+                {{/each}}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success btn-block">Submit</button>
+    </form>
+</div>

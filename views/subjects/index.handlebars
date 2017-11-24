@@ -1,0 +1,26 @@
+<h1>Subjects</h1>
+<input type="text" class="form-control mb-2" id="searchInput" placeholder="Search subject...">
+<ul class="list-group" id="subjects">
+{{#each subjects}}
+    <li class="list-group-item"><a href="/subjects/{{ courseCode }}">{{ courseCode }} - {{ courseName }}</a></li>
+{{else}}
+    <li class="list-group-item">There are no tutors online.</li>
+{{/each}}
+</ul>
+
+<script>
+    var searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('keyup', filterSubjects);
+
+    function filterSubjects(){
+        var searchValue = document.getElementById('searchInput').value.toUpperCase();
+        var subjects = document.getElementById('subjects').getElementsByTagName('LI');
+        for(var i = 0, l = subjects.length; i < l; ++i){
+            if(subjects[i].getElementsByTagName('A')[0].innerText.toUpperCase().indexOf(searchValue) != -1){
+                subjects[i].style.display = '';
+            } else {
+                subjects[i].style.display = 'none';
+            }
+        }
+    }
+</script>

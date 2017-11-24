@@ -1,0 +1,17 @@
+{{#each errors}}
+<div class="alert alert-danger">{{ text }}</div>
+{{/each}}
+<div class="card card-body">
+    <h3>Add Subject</h3>
+    <form action="/subjects/add" method="post">
+        <div class="form-group">
+            <label for="courseCode">Course Code</label>
+            <input type="text" class="form-control" name="courseCode" value="{{ newSubject.courseCode }}">
+        </div>
+        <div class="form-group">
+            <label for="courseName">Course Name</label>
+            <input type="text" class="form-control" name="courseName" value="{{ newSubject.courseName }}">
+        </div>
+        <button type="submit" class="btn btn-success btn-block">Submit</button>
+    </form>
+</div>
