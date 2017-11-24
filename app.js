@@ -89,7 +89,8 @@ app.get('/subjects/all', (req, res) => {
         .then(subjects => {
             res.render('subjects/index', {
                 subjects: subjects,
-                totalSubjects: subjects.length
+                totalSubjects: subjects.length,
+                type: 'All'
             });
         });
 });
@@ -167,7 +168,8 @@ app.get('/subjects', (req, res) => {
             }
             res.render('subjects/index', {
                 subjects: onlineSubjects,
-                totalSubjects: onlineSubjects.length
+                totalSubjects: onlineSubjects.length,
+                type: 'Available'
             });
         });
 });
