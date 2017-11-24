@@ -4,6 +4,6 @@ if(process.env.NODE_ENV === 'production'){
     }
 } else {
     module.exports = {
-        mongoURI: 'mongodb://admin:admin123*@ds113660.mlab.com:13660/vandystemtutoring'
+        mongoURI: 'mongodb://localhost/stemtutoring'
     }
 }

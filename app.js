@@ -78,6 +78,7 @@ app.post('/subjects/add', (req, res) => {
 // List All Subjects
 app.get('/subjects/all', (req, res) => {
     Subject.find({})
+        .sort({ courseCode: 'asc' })
         .populate('tutors.tutorId')
         .then(subjects => {
             res.render('subjects/index', {
@@ -141,6 +142,7 @@ app.post('/subjects/tutors', (req, res) => {
 // Tutors Index Page
 app.get('/subjects', (req, res) => {
     Subject.find({})
+        .sort({ courseCode: 'asc' })
         .populate('tutors.tutorId')
         .then(subjects => {
             let onlineSubjects = [];
