@@ -88,7 +88,8 @@ app.get('/subjects/all', (req, res) => {
         .populate('tutors.tutorId')
         .then(subjects => {
             res.render('subjects/index', {
-                subjects: subjects
+                subjects: subjects,
+                totalSubjects: subjects.length
             });
         });
 });
