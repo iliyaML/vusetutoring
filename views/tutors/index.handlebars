@@ -3,9 +3,9 @@
 {{#each tutors}}
 <li class="list-group-item">
     {{#if status}}
-    <span class="circle text-success"></span>
+    <span class="circle text-success" title="Available"></span>
     {{else}} 
-    <span class="circle text-secondary"></span>
+    <span class="circle text-secondary" title="Unavailable"></span>
     {{/if}} {{ firstName }} {{ lastName }}</li>
 {{else}}
 <li class="list-group-item">No tutors listed.</li>
