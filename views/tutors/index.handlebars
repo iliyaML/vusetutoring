@@ -1,8 +1,13 @@
 <h1>Tutors ({{ totalTutors }})</h1>
 <ul class="list-group" id="subjects"></ul>
 {{#each tutors}}
-    <li class="list-group-item">{{ firstName }}</li>
+<li class="list-group-item">
+    {{#if status}}
+    <span class="circle text-success"></span>
+    {{else}} 
+    <span class="circle text-secondary"></span>
+    {{/if}} {{ firstName }}</li>
 {{else}}
-    <li class="list-group-item">No tutors listed.</li>
+<li class="list-group-item">No tutors listed.</li>
 {{/each}}
 </ul>

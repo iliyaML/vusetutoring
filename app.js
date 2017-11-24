@@ -166,7 +166,8 @@ app.get('/subjects', (req, res) => {
                 }
             }
             res.render('subjects/index', {
-                subjects: onlineSubjects
+                subjects: onlineSubjects,
+                totalSubjects: onlineSubjects.length
             });
         });
 });
