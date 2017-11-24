@@ -1,7 +1,7 @@
 {
   "name": "vandystemtutoring",
   "version": "1.0.0",
-  "description": "App for Vandy STEM Tutoring",
+  "description": "App for VUSE Tutoring",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
