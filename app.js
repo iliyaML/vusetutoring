@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const path = require('path');
 
 const app = express();
 
@@ -25,6 +26,9 @@ require('./models/Tutor');
 require('./models/Subject');
 const Tutor = mongoose.model('tutors');
 const Subject = mongoose.model('subjects');
+
+// 
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Express Handlebars Middleware
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
