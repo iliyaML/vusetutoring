@@ -5,9 +5,8 @@
 <script src="/js/idb-keyval.min.js"></script>
 <script>
     idbKeyval.get('vusetutoring').then(val => {
-        console.log(val);
         // List subjects from cache
-        if (typeof (val) !== undefined) {
+        if (val !== undefined) {
             listSubjects(val);
         }
 
