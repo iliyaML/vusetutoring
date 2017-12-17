@@ -10,8 +10,10 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
+    "helmet": "^3.9.0",
     "idb": "^2.0.4",
     "method-override": "^2.3.10",
     "mongoose": "^4.13.4"

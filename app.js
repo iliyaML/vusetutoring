@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const path = require('path');
+const compression = require('compression');
+const helmet = require('helmet');
 
 const app = express();
 
@@ -27,7 +29,13 @@ require('./models/Subject');
 const Tutor = mongoose.model('tutors');
 const Subject = mongoose.model('subjects');
 
-// 
+// Compression Middleware
+app.use(compression());
+
+// Helmet Middleware
+app.use(helmet());
+
+// Static Assets
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Express Handlebars Middleware
