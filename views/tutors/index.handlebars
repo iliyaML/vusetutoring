@@ -1,13 +1,38 @@
-<h3>Tutors ({{ totalTutors }})</h3>
-<ul class="list-group" id="subjects"></ul>
-{{#each tutors}}
-<li class="list-group-item">
-    {{#if status}}
-    <span class="circle text-success" title="Available"></span>
-    {{else}} 
-    <span class="circle text-secondary" title="Unavailable"></span>
-    {{/if}} {{ firstName }} {{ lastName }}</li>
-{{else}}
-<li class="list-group-item">No tutors listed.</li>
-{{/each}}
-</ul>
+<h3>Tutors</h3>
+<ul class="list-group" id="tutors"></ul>
+
+<script src="/js/idb-keyval.min.js"></script>
+<script>
+    idbKeyval.get('tutors').then(val => {
+        // List tutors from cache
+        if (val !== undefined) {
+            listTutors(val);
+        }
+
+        // Fetch updates from network
+        fetch('/json/tutors')
+            .then(res => res.json())
+            .then(data => {
+                // Update cache
+                idbKeyval.set('tutors', data)
+                    .then(() => console.log('Saved new cache!'))
+                    .catch(err => console.log('It failed!', err));
+                listTutors(data);
+            });
+    });
+
+    function listTutors(data) {
+        document.getElementById('tutors').innerHTML = "";
+        for (let i = 0, l = data.tutors.length; i < l; ++i) {
+            var status = `<span class="circle text-success" title="Available"></span>`;
+            if (!data.tutors[i].status) {
+                status = `<span class="circle text-secondary" title="Unavailable"></span>`;
+            }
+            document.getElementById('tutors').innerHTML += `
+            <li class="list-group-item">
+                ${status} ${data.tutors[i].firstName} ${data.tutors[i].lastName}
+            </li>
+            `;
+        }
+    }
+</script>

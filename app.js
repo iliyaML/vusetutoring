@@ -9,6 +9,7 @@ const helmet = require('helmet');
 
 const app = express();
 
+// PORT Number
 const PORT = process.env.PORT || 5000;
 
 // DB Config
@@ -94,20 +95,20 @@ app.post('/subjects/add', (req, res) => {
 });
 
 // List All Subjects
-app.get('/subjects/all', (req, res) => {
-    Subject.find({})
-        .sort({ courseCode: 'asc' })
-        .populate('tutors.tutorId')
-        .then(subjects => {
-            res.render('subjects/index', {
-                subjects: subjects,
-                totalSubjects: subjects.length,
-                type: 'All'
-            });
-        });
-});
+// app.get('/subjects/all', (req, res) => {
+//     Subject.find({})
+//         .sort({ courseCode: 'asc' })
+//         .populate('tutors.tutorId')
+//         .then(subjects => {
+//             res.render('subjects/index', {
+//                 subjects: subjects,
+//                 totalSubjects: subjects.length,
+//                 type: 'All'
+//             });
+//         });
+// });
 
-app.get('/json', (req, res) => {
+app.get('/json/subjects', (req, res) => {
     Subject.find({})
         .sort({ courseCode: 'asc' })
         .populate('tutors.tutorId')
@@ -285,7 +286,15 @@ app.get('/tutors/timeclock', (req, res) => {
 app.get('/tutors', (req, res) => {
     Tutor.find({})
         .then(tutors => {
-            res.render('tutors/index', {
+            res.render('tutors/index');
+        });
+
+});
+
+app.get('/json/tutors', (req, res) => {
+    Tutor.find({})
+        .then(tutors => {
+            res.json({
                 tutors: tutors,
                 totalTutors: tutors.length
             });

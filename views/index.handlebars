@@ -4,18 +4,18 @@
 
 <script src="/js/idb-keyval.min.js"></script>
 <script>
-    idbKeyval.get('vusetutoring').then(val => {
+    idbKeyval.get('subjects').then(val => {
         // List subjects from cache
         if (val !== undefined) {
             listSubjects(val);
         }
 
         // Fetch updates from network
-        fetch('/json')
+        fetch('/json/subjects')
             .then(res => res.json())
             .then(data => {
                 // Update cache
-                idbKeyval.set('vusetutoring', data)
+                idbKeyval.set('subjects', data)
                     .then(() => console.log('Saved new cache!'))
                     .catch(err => console.log('It failed!', err));
                 listSubjects(data);
@@ -25,7 +25,6 @@
     function listSubjects(data) {
         document.getElementById('subjects').innerHTML = "";
         for (let i = 0, l = data.subjects.length; i < l; ++i) {
-            console.log(data.subjects[i].__v);
             var status = `<span class="circle text-success" title="Available"></span>`;
             if (!data.subjects[i].__v) {
                 status = `<span class="circle text-secondary" title="Unavailable"></span>`;

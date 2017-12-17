@@ -35,3 +35,7 @@ html {
   code {
     font-size: 80%;
   }
+
+  .circle:before {
+    content: ' \25CF';
+}

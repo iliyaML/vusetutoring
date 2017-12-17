@@ -1,7 +1,8 @@
-var CACHE_NAME = 'vusetutoring-v1';
+var CACHE_NAME = 'vusetutors-v1';
 var urlsToCache = [
     '/',
     '/about',
+    '/tutors',
     '/css/bootstrap.min.css',
     '/css/custom.css',
     '/img/icons/favicon.ico',
