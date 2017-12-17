@@ -43,7 +43,7 @@ app.use(methodOverride('_method'));
 
 // Index Page
 app.get('/', (req, res) => {
-    res.redirect('/subjects');
+    res.render('index');
 });
 
 // About Page
@@ -92,6 +92,19 @@ app.get('/subjects/all', (req, res) => {
         .populate('tutors.tutorId')
         .then(subjects => {
             res.render('subjects/index', {
+                subjects: subjects,
+                totalSubjects: subjects.length,
+                type: 'All'
+            });
+        });
+});
+
+app.get('/json', (req, res) => {
+    Subject.find({})
+        .sort({ courseCode: 'asc' })
+        .populate('tutors.tutorId')
+        .then(subjects => {
+            res.json({
                 subjects: subjects,
                 totalSubjects: subjects.length,
                 type: 'All'
@@ -176,6 +189,36 @@ app.get('/subjects', (req, res) => {
                 type: 'Available'
             });
         });
+});
+
+// app.get('/json', (req, res) => {
+//     Subject.find({})
+//         .sort({ courseCode: 'asc' })
+//         .populate('tutors.tutorId')
+//         .then(subjects => {
+//             let onlineSubjects = [];
+//             for(let i = 0, l = subjects.length; i < l; ++i){
+//                 let onlineTutor = false;
+//                 for(let x = 0, z = subjects[i].tutors.length; x < z; ++x){
+//                     if(subjects[i].tutors[x].tutorId.status){
+//                         onlineTutor = true;
+//                         break;
+//                     }
+//                 }
+//                 if(onlineTutor){
+//                     onlineSubjects.push(subjects[i]);
+//                 }
+//             }
+//             res.json({
+//                 subjects: onlineSubjects,
+//                 totalSubjects: onlineSubjects.length,
+//                 type: 'Available'
+//             });
+//         });
+// });
+
+app.get('/skeleton', (req, res) => {
+    res.render('skeleton');
 });
 
 // Add Tutor Form (GET)

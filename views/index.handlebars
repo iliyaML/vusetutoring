@@ -1,1 +1,60 @@
-Hello World!
+<h3>Subjects</h3>
+<input type="text" class="form-control mb-2" id="searchInput" placeholder="Search subject...">
+<ul class="list-group" id="subjects"></ul>
+
+<script src="/js/idb-keyval.min.js"></script>
+<script>
+    idbKeyval.get('vusetutoring').then(val => {
+        console.log(val);
+        // List subjects from cache
+        if (typeof (val) !== undefined) {
+            listSubjects(val);
+        }
+
+        // Fetch updates from network
+        fetch('/json')
+            .then(res => res.json())
+            .then(data => {
+                // Update cache
+                idbKeyval.set('vusetutoring', data)
+                    .then(() => console.log('Saved new cache!'))
+                    .catch(err => console.log('It failed!', err));
+                listSubjects(data);
+            });
+    });
+
+    function listSubjects(data) {
+        document.getElementById('subjects').innerHTML = "";
+        for (let i = 0, l = data.subjects.length; i < l; ++i) {
+            console.log(data.subjects[i].__v);
+            var status = `<span class="circle text-success" title="Available"></span>`;
+            if (!data.subjects[i].__v) {
+                status = `<span class="circle text-secondary" title="Unavailable"></span>`;
+            }
+            document.getElementById('subjects').innerHTML += `
+            <li class="list-group-item">
+                ${status}
+                <a href="/subjects/${data.subjects[i].courseCode}">
+                    ${data.subjects[i].courseCode} - ${data.subjects[i].courseName}
+                </a>
+            </li>
+            `;
+        }
+    }
+
+    // Search feature
+    var searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('keyup', filterSubjects);
+
+    function filterSubjects() {
+        var searchValue = document.getElementById('searchInput').value.toUpperCase();
+        var subjects = document.getElementById('subjects').getElementsByTagName('LI');
+        for (var i = 0, l = subjects.length; i < l; ++i) {
+            if (subjects[i].getElementsByTagName('A')[0].innerText.toUpperCase().indexOf(searchValue) != -1) {
+                subjects[i].style.display = '';
+            } else {
+                subjects[i].style.display = 'none';
+            }
+        }
+    }
+</script>
