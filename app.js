@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 const path = require('path');
 const compression = require('compression');
 const helmet = require('helmet');
+const sslRedirect = require('heroku-ssl-redirect');
 
 const app = express();
 
