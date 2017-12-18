@@ -30,6 +30,9 @@ require('./models/Subject');
 const Tutor = mongoose.model('tutors');
 const Subject = mongoose.model('subjects');
 
+// Enable SSL Redirect
+app.use(sslRedirect());
+
 // Compression Middleware
 app.use(compression());
 
