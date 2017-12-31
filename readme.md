@@ -4,6 +4,7 @@ A *progressive web app* (PWA) that shows the subjects that are available for tut
 
 Demo: [VUSE Tutors](https://vusetutors.herokuapp.com/)
 
+![alt text](https://raw.githubusercontent.com/iliyaML/vusetutors/master/banner.jpg "Splash Page")
 ![alt text](https://raw.githubusercontent.com/iliyaML/vusetutors/master/splashpage.jpg "Splash Page")
 ![alt text](https://raw.githubusercontent.com/iliyaML/vusetutors/master/app.jpg "App Page")
 
