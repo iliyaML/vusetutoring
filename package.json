@@ -1,7 +1,7 @@
 {
-  "name": "vandystemtutoring",
+  "name": "vusetutors",
   "version": "1.0.0",
-  "description": "App for VUSE Tutoring",
+  "description": "A progressive web app that shows the subjects that are available for tutoring in real-time for Vanderbilt University School of Engineering (VUSE) Tutoring program.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"

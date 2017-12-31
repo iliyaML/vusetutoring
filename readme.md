@@ -1,10 +1,19 @@
-VUSE Tutoring
+VUSE Tutors
 ======
-A web app that shows the subjects that are available for tutoring in real-time for Vanderbilt University School of Engineering (VUSE) Tutoring program. Subjects with available tutors will be listed on the [index](https://vusetutoring.herokuapp.com/). 
+A *progressive web app* (PWA) that shows the subjects that are available for tutoring in real-time for Vanderbilt University School of Engineering (VUSE) Tutoring program. 
 
-To see all the subjects listed for tutoring, click [here](https://vusetutoring.herokuapp.com/all).
-To see all the tutors, click [here](https://vusetutoring.herokuapp.com/tutors).
+Demo: [VUSE Tutors](https://vusetutors.herokuapp.com/)
 
-Demo: [VUSE Tutoring](https://vusetutoring.herokuapp.com/)
+![alt text](https://raw.githubusercontent.com/iliyaML/vusetutors/master/splashpage.jpg "Splash Page")
+![alt text](https://raw.githubusercontent.com/iliyaML/vusetutors/master/app.jpg "App Page")
 
-Dependencies: Express, Express-handlebars, Mongoose, Passport and Passport Local
+You can even install it as an app on your phone!
+
+Featuring:
+* **Service Worker** for offline capabilities
+* **Cache API** and **IndexedDB** for offline storage
+* **Web App Manifest** for app-like installation
+
+LightHouse Audit
+------
+![Lighthouse Audit](https://raw.githubusercontent.com/iliyaML/vusetutors/master/vusetutors-lighthouse-audit.PNG)
